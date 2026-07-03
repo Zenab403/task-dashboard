@@ -11,6 +11,11 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // ✅ allows frontend (localhost:3000) to access backend (localhost:5000)
 
+// ✅ Root route
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected successfully'))
@@ -27,4 +32,3 @@ app.use('/tasks', taskRoutes);
 app.listen(process.env.PORT, () => {
   console.log(`🚀 Server started on port ${process.env.PORT}`);
 });
-
