@@ -5,7 +5,7 @@ const taskSchema = new mongoose.Schema({
   status: { type: String, default: 'Incomplete' }
 }, { timestamps: true });
 
-// ✅ Explicitly tell Mongoose to use "tasks" collection
+// ✅ Explicitly bind to "tasks" collection
 const Task = mongoose.model('Task', taskSchema, 'tasks');
 
 export default Task;

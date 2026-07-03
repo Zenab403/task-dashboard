@@ -5,10 +5,13 @@ const router = express.Router();
 
 // ✅ GET all tasks
 router.get('/', async (req, res) => {
+  console.log("✅ GET /api/tasks route hit");
   try {
     const tasks = await Task.find();
+    console.log("Fetched tasks:", tasks);
     res.json(tasks);
   } catch (err) {
+    console.error("❌ Error fetching tasks:", err.message);
     res.status(500).json({ error: err.message });
   }
 });
@@ -27,11 +30,7 @@ router.post('/', async (req, res) => {
 // ✅ PUT update task
 router.put('/:id', async (req, res) => {
   try {
-    const task = await Task.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(task);
   } catch (err) {
     res.status(400).json({ error: err.message });
