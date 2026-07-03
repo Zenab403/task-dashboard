@@ -9,7 +9,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors()); // ✅ allows frontend (localhost:3000) to access backend (localhost:5000)
+app.use(cors());
 
 // ✅ Root route
 app.get("/", (req, res) => {
@@ -25,8 +25,8 @@ mongoose.connection.on('connected', () => {
   console.log('Connected to DB:', mongoose.connection.db.databaseName);
 });
 
-// Routes
-app.use('/tasks', taskRoutes);
+// ✅ Consistent route prefix
+app.use('/api/tasks', taskRoutes);
 
 // Start server
 app.listen(process.env.PORT, () => {
