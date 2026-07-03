@@ -10,7 +10,7 @@ It provides REST APIs for managing tasks and connects to MongoDB Atlas.
 - Secure deployment on Render
 
 ## Project Structure
-task-dashboard-backend/
+task-dashboard/
 │── server.js        # Entry point
 │── package.json     # Dependencies and scripts
 │── routes/          # Task routes
